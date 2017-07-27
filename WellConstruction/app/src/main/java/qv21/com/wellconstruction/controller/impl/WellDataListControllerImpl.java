@@ -6,6 +6,7 @@
 package qv21.com.wellconstruction.controller.impl;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.util.List;
@@ -43,9 +44,37 @@ public class WellDataListControllerImpl implements WellDataListController {
      */
     @Override
     public void loadWellDataList() {
-        WellRepository wellRepository = new WellDataRepository(new WellDataStoreFactory(mContext));
-        mOwnerList = wellRepository.wellDataModels();
-        mWellDataListView.onLoadWellDataList(mOwnerList);
+
+        AsyncTask<Context, Void, List<Owner>> asyncTask = new AsyncTask<Context, Void, List<Owner>>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                mWellDataListView.showLoading();
+            }
+
+            @Override
+            protected List<Owner> doInBackground(Context... params) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                WellRepository wellRepository = new WellDataRepository(new WellDataStoreFactory(params[0]));
+                return wellRepository.wellDataModels();
+            }
+
+            @Override
+            protected void onPostExecute(List<Owner> ownerList) {
+                super.onPostExecute(ownerList);
+                if (mWellDataListView != null) {
+                    mWellDataListView.dismissLoading();
+                    mOwnerList = ownerList;
+                    mWellDataListView.onLoadWellDataList(mOwnerList);
+                }
+            }
+        };
+        asyncTask.execute(mContext, null);
     }
 
     /**
