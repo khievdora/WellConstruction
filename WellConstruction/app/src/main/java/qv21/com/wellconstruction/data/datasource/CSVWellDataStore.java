@@ -66,10 +66,6 @@ public class CSVWellDataStore implements  WellDataStore {
                         datas[13], // TWP
                         datas[14], // RNG
                         datas[15])); // County
-
-                if (WellDataEntitys.size() == 10) {
-                    break;
-                }
             }
         } catch (IOException e){
             e.printStackTrace();
