@@ -5,6 +5,7 @@
 
 package qv21.com.wellconstruction.view.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -40,6 +41,8 @@ public class WellDataListFragment extends Fragment implements WellDataListView {
     private GridView mGrdWellData;
     private WellDataGridItemAdapter mWellDataGridItemAdapter;
     private WellDataListController mWellDataListController;
+
+    private ProgressDialog mProgressDialog;
 
     public WellDataListFragment() {
         // Required empty public constructor
@@ -140,6 +143,24 @@ public class WellDataListFragment extends Fragment implements WellDataListView {
     public void refreshList() {
         Log.d(TAG, "Owner 0 is " + mWellDataGridItemAdapter.getItem(0).getOwnerName());
         mWellDataGridItemAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showLoading() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(getActivity());
+            mProgressDialog.setMessage(getString(R.string.msg_loading));
+            mProgressDialog.setIndeterminate(false);
+            mProgressDialog.setCanceledOnTouchOutside(false);
+            mProgressDialog.show();
+        }
+    }
+
+    @Override
+    public void dismissLoading() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
     }
 
     @Override

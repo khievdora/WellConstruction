@@ -46,5 +46,15 @@ public interface WellDataListView  extends  BaseView {
      */
     public void refreshList();
 
+    /**
+     * Display loading dialog to user when retrieving data
+     */
+    public void showLoading();
+
+    /**
+     * Dismiss Loading dialog
+     */
+    public void dismissLoading();
+
 }
 
