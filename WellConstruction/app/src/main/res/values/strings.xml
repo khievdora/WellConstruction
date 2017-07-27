@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">WellConstruction</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="well_data_detail">Well Data Detail</string>
+    <string name="owner_info">Owner Info</string>
+    <string name="owner_name">Owner Name</string>
+    <string name="well_info">Well Info</string>
+    <string name="well_name">Well Name</string>
+    <string name="api_number">API Number</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="property_number">Property Number</string>
+    <string name="sec">SEC</string>
+    <string name="twp">TWP</string>
+    <string name="rng">RNG</string>
+    <string name="county">County</string>
+    <string name="tank_info">Tank Info</string>
+    <string name="tank_name">Tank Name</string>
+    <string name="tank_mid">Tank MID</string>
+    <string name="tank_number">Tank Number</string>
+    <string name="tank_size">Tank Size</string>
+    <string name="bbls_per_inch">BBLS Per Inch</string>
+    <string name="require_field">Require field!</string>
 </resources>
