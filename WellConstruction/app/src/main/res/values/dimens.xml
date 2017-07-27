@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_margin">5dp</dimen>
+    <dimen name="small_elevation">3dp</dimen>
+    <dimen name="small_value">5dp</dimen>
+</resources>
