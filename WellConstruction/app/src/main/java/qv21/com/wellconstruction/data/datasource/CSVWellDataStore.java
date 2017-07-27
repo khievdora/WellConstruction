@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2017. All rights reserved.
+ * @author Dora Khiev
+ */
+
 package qv21.com.wellconstruction.data.datasource;
 
 import android.content.Context;
@@ -17,6 +22,9 @@ import qv21.com.wellconstruction.data.entity.WellDataEntity;
  * Created by Dora on 7/26/2017.
  */
 
+/**
+ * Class responsible for reading data from CSV file
+ */
 public class CSVWellDataStore implements  WellDataStore {
 
     private Context mContext;
@@ -25,6 +33,10 @@ public class CSVWellDataStore implements  WellDataStore {
         mContext = context;
     }
 
+    /**
+     * This method will read all data from CSV file and return back as List of WellDataEntity.
+     * @return
+     */
     @Override
     public List<WellDataEntity> wellDataEntities() {
 
@@ -38,7 +50,6 @@ public class CSVWellDataStore implements  WellDataStore {
             String headerLine = bufferedReader.readLine();
             while ((csvLine = bufferedReader.readLine()) != null) {
                 String[] datas = csvLine.split(",");
-                Log.d("Long " , datas[2]);
                 WellDataEntitys.add(new WellDataEntity(
                         datas[0] + ", " + datas[1] , // Owner
                         datas[2], // Api Number
@@ -55,6 +66,10 @@ public class CSVWellDataStore implements  WellDataStore {
                         datas[13], // TWP
                         datas[14], // RNG
                         datas[15])); // County
+
+                if (WellDataEntitys.size() == 10) {
+                    break;
+                }
             }
         } catch (IOException e){
             e.printStackTrace();

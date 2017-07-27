@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2017. All rights reserved.
+ * @author Dora Khiev
+ */
+
 package qv21.com.wellconstruction.data.entity;
 
 /**
@@ -5,7 +10,7 @@ package qv21.com.wellconstruction.data.entity;
  */
 
 /**
- * Class that represent well_data in domain layer
+ * Class that represent Well Data from CSV file.
  */
 public class WellDataEntity {
 

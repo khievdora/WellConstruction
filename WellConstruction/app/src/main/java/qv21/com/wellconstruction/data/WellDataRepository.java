@@ -1,3 +1,8 @@
+/*
+ * Copyright (C) 2017. All rights reserved.
+ * @author Dora Khiev
+ */
+
 package qv21.com.wellconstruction.data;
 
 import java.util.List;
@@ -12,7 +17,7 @@ import qv21.com.wellconstruction.domain.Owner;
  */
 
 /**
- * {@link WellRepository} for retrieving well_data.
+ * {@link WellRepository} for retrieving well_data. It follows Repository Pattern in this case.
  */
 public class WellDataRepository implements WellRepository {
 
@@ -22,6 +27,12 @@ public class WellDataRepository implements WellRepository {
         mWellDataStoreFactory = wellDataStoreFactory;
     }
 
+    /**
+     * Load List of Owner from CSV file. It also perform mapping between WellDataEntity and Owner.
+     * Because in the future, if we gonna have multiple format from multiple data store. Therefore,
+     * it is a good idea to have a mapper for each model and entity.
+     * @return
+     */
     @Override
     public List<Owner> wellDataModels() {
         List<WellDataEntity> wellDataEntities =
