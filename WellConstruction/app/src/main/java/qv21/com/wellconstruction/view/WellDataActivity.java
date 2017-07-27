@@ -6,6 +6,8 @@
 package qv21.com.wellconstruction.view;
 
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -107,8 +109,14 @@ public class WellDataActivity extends AppCompatActivity implements
      * @param fragment is the fragment that need to displayed on the screen.
      */
     public void navigateToFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment)
-                .addToBackStack(fragment.getClass().getName())
-                .commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        //getSupportFragmentManager().beginTransaction().add(R.id.fragmentContainer, fragment)
+        if (fragment instanceof WellDataListFragment) {
+            fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        } else {
+            fragmentTransaction.add(R.id.fragmentContainer, fragment);
+            fragmentTransaction.addToBackStack(fragment.getClass().getName());
+        }
+        fragmentTransaction.commit();
     }
 }
