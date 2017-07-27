@@ -1,10 +1,20 @@
+/*
+ * Copyright (C) 2017. All rights reserved.
+ * @author Dora Khiev
+ */
+
 package qv21.com.wellconstruction.domain;
+
+import java.io.Serializable;
 
 /**
  * Created by Dora on 7/26/2017.
  */
 
-public class Tank {
+/**
+ * Tank Model contains Information related to Tank.
+ */
+public class Tank implements Serializable {
 
     private String mTankName;
     private int mTankMID;
